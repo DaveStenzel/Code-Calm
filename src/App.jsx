@@ -14,6 +14,7 @@ import RelaxationScreen from './screens/RelaxationScreen.jsx'
 
 const DEFAULT_SETTINGS = {
   trackingOn: true,
+  saveJournal: true,
   remindersOn: false,
   reminderTime: '18:00',
 }
@@ -83,7 +84,12 @@ export default function App() {
               <ActivitiesScreen onStartActivity={startActivity} />
             )}
             {tab === 'journal' && (
-              <JournalScreen journalEntries={journalEntries} onSaveEntry={saveJournalEntry} sw={sw} />
+              <JournalScreen
+                journalEntries={journalEntries}
+                onSaveEntry={saveJournalEntry}
+                saveJournal={settings.saveJournal}
+                sw={sw}
+              />
             )}
             {tab === 'settings' && (
               <SettingsScreen settings={settings} onUpdateSettings={setSettings} />

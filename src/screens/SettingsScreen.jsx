@@ -15,6 +15,13 @@ export default function SettingsScreen({ settings, onUpdateSettings }) {
             on={settings.trackingOn}
             onToggle={() => toggle('trackingOn')}
           />
+          <ToggleRow
+            label="Save journal entries"
+            description="Keep a history of past reflections"
+            on={settings.saveJournal}
+            onToggle={() => toggle('saveJournal')}
+            last
+          />
         </Section>
 
         <Section label="Reminders">
@@ -62,9 +69,9 @@ function Section({ label, children }) {
   )
 }
 
-function ToggleRow({ label, description, on, onToggle }) {
+function ToggleRow({ label, description, on, onToggle, last }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.875rem 1rem', borderBottom: `0.5px solid ${C.border}` }}
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.875rem 1rem', borderBottom: last ? 'none' : `0.5px solid ${C.border}` }}
       onClick={onToggle}
     >
       <div>

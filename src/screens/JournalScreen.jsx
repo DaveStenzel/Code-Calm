@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { C } from '../constants.js'
 import { JOURNAL_PROMPTS } from '../data.js'
 
-export default function JournalScreen({ journalEntries, onSaveEntry, sw }) {
+export default function JournalScreen({ journalEntries, onSaveEntry, saveJournal, sw }) {
   const [text, setText] = useState('')
   const [saved, setSaved] = useState(false)
   const [view, setView] = useState('write') // 'write' | 'history'
@@ -11,8 +11,10 @@ export default function JournalScreen({ journalEntries, onSaveEntry, sw }) {
 
   const save = () => {
     if (!text.trim()) return
-    onSaveEntry({ body: text.trim(), prompt, created_at: new Date().toISOString() })
-    if (sw) sw.queueWrite({ url: '/api/journal', method: 'POST', body: { entry: text, timestamp: Date.now() } })
+    if (saveJournal) {
+      onSaveEntry({ body: text.trim(), prompt, created_at: new Date().toISOString() })
+      if (sw) sw.queueWrite({ url: '/api/journal', method: 'POST', body: { entry: text, timestamp: Date.now() } })
+    }
     setSaved(true)
     setText('')
     setTimeout(() => setSaved(false), 3000)
@@ -23,16 +25,27 @@ export default function JournalScreen({ journalEntries, onSaveEntry, sw }) {
       <div style={{ padding: '1.25rem 1.25rem 0' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
           <h2 style={{ fontSize: '20px', fontWeight: 600, letterSpacing: '-0.01em' }}>Journal</h2>
-          <button
-            onClick={() => setView(v => v === 'write' ? 'history' : 'write')}
-            style={{ background: 'none', border: `0.5px solid ${C.border}`, borderRadius: '99px', padding: '5px 14px', fontSize: '13px', color: C.muted, cursor: 'pointer' }}
-          >
-            {view === 'write' ? 'Past entries' : 'Write'}
-          </button>
+          {saveJournal && (
+            <button
+              onClick={() => setView(v => v === 'write' ? 'history' : 'write')}
+              style={{ background: 'none', border: `0.5px solid ${C.border}`, borderRadius: '99px', padding: '5px 14px', fontSize: '13px', color: C.muted, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
+            >
+              {view === 'write' ? (
+                <>
+                  Past entries
+                  {journalEntries.length > 0 && (
+                    <span style={{ background: C.primary, color: '#fff', borderRadius: '99px', fontSize: '11px', fontWeight: 600, padding: '0px 6px', lineHeight: '18px' }}>
+                      {journalEntries.length}
+                    </span>
+                  )}
+                </>
+              ) : 'Write'}
+            </button>
+          )}
         </div>
 
         {view === 'write' ? (
-          <WriteView prompt={prompt} text={text} setText={setText} save={save} saved={saved} isOffline={sw?.isOffline} />
+          <WriteView prompt={prompt} text={text} setText={setText} save={save} saved={saved} saveJournal={saveJournal} isOffline={sw?.isOffline} />
         ) : (
           <HistoryView entries={journalEntries} />
         )}
@@ -41,7 +54,7 @@ export default function JournalScreen({ journalEntries, onSaveEntry, sw }) {
   )
 }
 
-function WriteView({ prompt, text, setText, save, saved, isOffline }) {
+function WriteView({ prompt, text, setText, save, saved, saveJournal, isOffline }) {
   return (
     <>
       <div style={{ background: C.card, border: `0.5px solid ${C.border}`, borderRadius: '12px', padding: '0.875rem 1.125rem', marginBottom: '1rem' }}>
@@ -63,10 +76,16 @@ function WriteView({ prompt, text, setText, save, saved, isOffline }) {
         }}
       />
 
+      {!saveJournal && (
+        <p style={{ fontSize: '12px', color: C.subtle, marginTop: '0.625rem' }}>
+          Entry history is off — turn on "Save journal entries" in Settings to keep a record.
+        </p>
+      )}
+
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginTop: '0.75rem', gap: '0.75rem' }}>
         {saved && (
           <span style={{ fontSize: '13px', color: C.primary }}>
-            {isOffline ? 'Saved — will sync when online' : 'Saved'}
+            {!saveJournal ? 'Written' : isOffline ? 'Saved — will sync when online' : 'Saved to history'}
           </span>
         )}
         <button
@@ -79,7 +98,7 @@ function WriteView({ prompt, text, setText, save, saved, isOffline }) {
             cursor: text.trim() ? 'pointer' : 'default',
           }}
         >
-          Save entry
+          {saveJournal ? 'Save entry' : 'Write & clear'}
         </button>
       </div>
     </>
