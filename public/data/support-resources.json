@@ -1,46 +1,17 @@
 {
-  "resources": [
-    {
-      "name": "Safe Call Now",
-      "contact": "1-206-459-3020",
-      "type": "phone",
-      "description": "Confidential crisis referral service specifically for first responders and their families",
-      "availability": "24/7"
-    },
-    {
-      "name": "Crisis Text Line",
-      "contact": "741741",
-      "type": "text",
-      "description": "Text HOME to 741741 — free, confidential crisis counseling via text",
-      "availability": "24/7"
-    },
-    {
-      "name": "Veterans Crisis Line",
-      "contact": "988, press 1",
-      "type": "phone",
-      "description": "Call or text 988 then press 1 — also available to first responders",
-      "availability": "24/7"
-    },
-    {
-      "name": "SAMHSA National Helpline",
-      "contact": "1-800-662-4357",
-      "type": "phone",
-      "description": "Free, confidential help for substance use and mental health disorders",
-      "availability": "24/7"
-    },
-    {
-      "name": "First Responder Support Network",
-      "contact": "frsn.org",
-      "type": "web",
-      "description": "Peer support and trauma recovery resources for first responders",
-      "availability": "Online"
-    },
-    {
-      "name": "Code Green Campaign",
-      "contact": "codegreencampaign.org",
-      "type": "web",
-      "description": "Mental health awareness and resources for first responders",
-      "availability": "Online"
-    }
+  "emergency": { "label": "Emergency", "number": "000", "note": "Police · Ambulance · Fire" },
+  "crisis": [
+    { "name": "Lifeline",                   "contact": "13 11 14",      "type": "phone", "note": "24/7 crisis support" },
+    { "name": "Beyond Blue",                "contact": "1300 22 4636",  "type": "phone", "note": "24/7 mental health support" },
+    { "name": "Suicide Call Back Service",  "contact": "1300 659 467",  "type": "phone", "note": "24/7 · free counselling" }
+  ],
+  "firstResponder": [
+    { "name": "Black Dog Institute — NEWSS", "contact": "nationalemergencyworkersupportservice.blackdoginstitute.org.au", "type": "web", "note": "Free specialist therapy for emergency workers" },
+    { "name": "Code 9 Foundation",           "contact": "code9ptsd.org.au",  "type": "web", "note": "Peer support & community for first responders with PTSD" },
+    { "name": "Beyond Blue — Police & Emergency", "contact": "beyondblue.org.au/who-does-it-affect/police-and-emergency-service-workers", "type": "web", "note": "Tailored resources for emergency workers" }
+  ],
+  "talkToSomeone": [
+    { "name": "MensLine Australia", "contact": "1300 789 978", "type": "phone", "note": "24/7 · men's mental health" },
+    { "name": "Open Arms",          "contact": "1800 011 046", "type": "phone", "note": "Veterans & families · 24/7" }
   ]
 }

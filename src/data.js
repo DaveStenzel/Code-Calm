@@ -1,0 +1,159 @@
+export const ACTIVITIES = [
+  {
+    id: 'box-breathing',
+    type: 'breathing',
+    title: 'Box Breathing',
+    subtitle: 'Calm your nervous system quickly',
+    duration: 4,
+    tag: 'Breathing',
+    phases: [
+      { label: 'Breathe in',  duration: 4 },
+      { label: 'Hold',        duration: 4 },
+      { label: 'Breathe out', duration: 4 },
+      { label: 'Hold',        duration: 4 },
+    ],
+    scripts: {
+      intro: "Welcome. Find a comfortable position — sitting upright with your feet flat on the floor, or lying down if you prefer. Box breathing is used by emergency workers to quickly settle the nervous system. We'll breathe to a count of four: in, hold, out, hold.",
+      phases: [
+        "Breathe in slowly...",
+        "Hold...",
+        "Breathe out gently...",
+        "Hold...",
+      ],
+      closing: "Well done. Your breath has naturally slowed and steadied. This technique is always available to you — any time, anywhere you need to reset.",
+    },
+  },
+  {
+    id: '4-7-8-breathing',
+    type: 'breathing',
+    title: '4-7-8 Breathing',
+    subtitle: 'A longer exhale to activate calm',
+    duration: 3,
+    tag: 'Breathing',
+    phases: [
+      { label: 'Breathe in',  duration: 4 },
+      { label: 'Hold',        duration: 7 },
+      { label: 'Breathe out', duration: 8 },
+    ],
+    scripts: {
+      intro: "Welcome. The 4-7-8 technique works by extending the exhale, which signals to your body that it's safe to relax. Find a comfortable position and let your shoulders drop naturally.",
+      phases: [
+        "Breathe in quietly through your nose...",
+        "Hold your breath...",
+        "Breathe out completely through your mouth...",
+      ],
+      closing: "Beautifully done. The longer exhale activates your body's natural calm response. Carry this with you.",
+    },
+  },
+  {
+    id: 'body-scan',
+    type: 'meditation',
+    title: 'Body Scan',
+    subtitle: 'Progressive relaxation head to toe',
+    duration: 8,
+    tag: 'Meditation',
+    steps: [
+      { heading: 'Settle in', body: "Close your eyes gently, or soften your gaze downward. Take three slow, natural breaths. With each exhale, let your body settle a little more heavily into where you're sitting or lying." },
+      { heading: 'Head', body: "Bring your attention to the top of your head. Notice any sensation — warmth, tingling, tightness, or nothing at all. Simply observe, without needing to change anything." },
+      { heading: 'Face & Jaw', body: "Slowly move your awareness through your face. Your forehead, your eyes, your jaw. Many of us hold tension in the jaw without realising. If you notice it, let it soften." },
+      { heading: 'Neck & Shoulders', body: "Bring attention to your neck and shoulders. This is where stress often gathers. With your next exhale, allow them to drop just a little." },
+      { heading: 'Chest', body: "Notice your chest and the steady rhythm of your breath. Your heart has been working for you all day — through everything you've faced." },
+      { heading: 'Arms & Hands', body: "Scan through your arms, your elbows, your hands. Notice the weight of them. Let them feel heavy and supported." },
+      { heading: 'Stomach & Back', body: "Bring awareness to your stomach and lower back. Notice the subtle rise and fall of your belly. Let go of any holding there." },
+      { heading: 'Legs & Feet', body: "Move attention through your hips, thighs, knees, calves, all the way down to your feet. Let your legs feel heavy and warm." },
+      { heading: 'Whole body', body: "Hold your whole body in awareness — from the top of your head to the soles of your feet. You are here. You are present. This is enough." },
+      { heading: 'Come back', body: "Gently bring your attention back to the room. Take a slow breath, and when you're ready, open your eyes." },
+    ],
+  },
+  {
+    id: 'pmr',
+    type: 'relaxation',
+    title: 'Progressive Muscle Relaxation',
+    subtitle: 'Tense and release to let go of physical stress',
+    duration: 8,
+    tag: 'Relaxation',
+    steps: [
+      { heading: 'Hands & Forearms', body: "Squeeze both hands into tight fists. Feel the tension build. Hold for five seconds... Now release completely. Notice the warmth and looseness as the tension drains away." },
+      { heading: 'Shoulders', body: "Pull your shoulders up toward your ears and squeeze hard. Hold... Now drop them completely. Feel the difference — the heaviness, the release." },
+      { heading: 'Neck', body: "Gently tilt your chin slightly toward your chest, creating mild tension in the back of your neck. Hold... Release and let your head return to a natural, easy position." },
+      { heading: 'Face', body: "Scrunch your entire face — close your eyes tight, press your lips, wrinkle your nose. Hold... Release. Let your face go completely soft." },
+      { heading: 'Chest', body: "Take a deep breath in and hold it, squeezing your shoulder blades together behind you. Hold... Exhale fully and let your chest sink. Notice the warmth spreading." },
+      { heading: 'Stomach', body: "Pull your stomach in tight, as if bracing for impact. Hold... Release. Let your belly go completely soft with your next exhale." },
+      { heading: 'Legs', body: "Press both heels firmly into the floor and tighten your thighs and calves. Hold... Release. Let your legs feel heavy and warm, fully supported." },
+      { heading: 'Feet', body: "Curl your toes downward as tight as you can. Hold... Release. Let your feet spread out and feel heavy." },
+    ],
+    closing: "Beautifully done. Take a moment to notice how different your body feels now compared to when you started. That release is available to you any time.",
+  },
+  {
+    id: 'grounding-54321',
+    type: 'relaxation',
+    title: '5-4-3-2-1 Grounding',
+    subtitle: 'Come back to the present moment',
+    duration: 5,
+    tag: 'Relaxation',
+    steps: [
+      { heading: '5 things you can see', body: "Look around you slowly. Notice five things you can see right now — a wall, a window, the floor, your hands. Take your time and name each one silently." },
+      { heading: '4 things you can feel', body: "Notice four things you can physically feel. The weight of your body in the seat. Your feet on the floor. The texture of your clothing. The temperature of the air." },
+      { heading: '3 things you can hear', body: "Listen carefully. Identify three different sounds — close or distant. A fan, voices, traffic, the quiet between sounds. Just notice them." },
+      { heading: '2 things you can smell', body: "Notice two things you can smell. If nothing specific, notice the absence of smell, or take a slow breath through your nose and observe what's there." },
+      { heading: '1 thing you can taste', body: "Notice one thing you can taste right now. Even the natural taste in your mouth counts." },
+    ],
+    closing: "You're here. You're present. That's exactly where you need to be right now. Take a slow breath and carry this steadiness with you.",
+  },
+]
+
+export const JOURNAL_PROMPTS = [
+  "What's one thing you handled well today?",
+  "How is your body feeling right now?",
+  "What would help you decompress tonight?",
+  "Name something you're grateful for from your shift.",
+  "Is there anything weighing on you that you'd like to set down?",
+  "What did you learn about yourself today?",
+  "Who supported you today, and how?",
+  "What do you need most right now?",
+  "Describe a moment from today where you felt capable.",
+  "If a colleague was feeling what you're feeling, what would you tell them?",
+  "What's something small that made your day better?",
+  "Is there something from work you need to process or let go of?",
+  "How did you show up for yourself today?",
+  "What does tomorrow look like, and what can you control?",
+]
+
+export const AFFIRMATIONS = [
+  "You showed up today. That matters.",
+  "It's okay to need rest. Rest is part of the work.",
+  "Your feelings are valid responses to what you face.",
+  "You don't have to carry this alone.",
+  "Taking care of yourself makes you better at everything else.",
+  "Small steps forward are still progress.",
+  "You are more than your job.",
+  "Asking for help is strength, not weakness.",
+  "What you do every day takes real courage.",
+  "You can't pour from an empty cup — fill yours first.",
+  "Today was hard. You still made it through.",
+  "Healing isn't linear, and that's okay.",
+]
+
+export const SUPPORT_RESOURCES = {
+  emergency: { label: 'Emergency', number: '000', note: 'Police · Ambulance · Fire' },
+  crisis: [
+    { name: 'Lifeline',                  contact: '13 11 14',       type: 'phone', note: '24/7 crisis support' },
+    { name: 'Beyond Blue',               contact: '1300 22 4636',   type: 'phone', note: '24/7 mental health support' },
+    { name: 'Suicide Call Back Service', contact: '1300 659 467',   type: 'phone', note: '24/7 · free counselling' },
+  ],
+  firstResponder: [
+    { name: 'Black Dog Institute — NEWSS', contact: 'nationalemergencyworkersupportservice.blackdoginstitute.org.au', type: 'web',   note: 'Free specialist therapy for emergency workers' },
+    { name: 'Code 9 Foundation',          contact: 'code9ptsd.org.au',   type: 'web',   note: 'Peer support & community for first responders with PTSD' },
+    { name: 'Beyond Blue — Police & Emergency', contact: 'beyondblue.org.au/who-does-it-affect/police-and-emergency-service-workers', type: 'web', note: 'Tailored resources for emergency workers' },
+  ],
+  talkToSomeone: [
+    { name: 'MensLine Australia', contact: '1300 789 978', type: 'phone', note: '24/7 · men\'s mental health' },
+    { name: 'Open Arms',          contact: '1800 011 046', type: 'phone', note: 'Veterans & families · 24/7' },
+  ],
+}
+
+export const MOOD_SUGGESTIONS = {
+  1: ['box-breathing', 'pmr', 'grounding-54321'],
+  2: ['box-breathing', 'body-scan', 'grounding-54321'],
+  3: ['body-scan', '4-7-8-breathing'],
+}
