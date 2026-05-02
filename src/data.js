@@ -4,6 +4,7 @@ export const ACTIVITIES = [
     type: 'breathing',
     title: 'Box Breathing',
     subtitle: 'Calm your nervous system quickly',
+    description: 'A simple 4-count breathing pattern used by military and emergency services to quickly reduce stress. Breathe in, hold, breathe out, hold — each for 4 seconds. Takes about 4 minutes and can be done anywhere.',
     duration: 4,
     tag: 'Breathing',
     phases: [
@@ -28,6 +29,7 @@ export const ACTIVITIES = [
     type: 'breathing',
     title: '4-7-8 Breathing',
     subtitle: 'A longer exhale to activate calm',
+    description: 'Developed by Dr Andrew Weil, this technique uses a longer exhale to trigger the body\'s natural relaxation response. Breathe in for 4, hold for 7, breathe out for 8. Particularly effective before sleep or after a stressful shift.',
     duration: 3,
     tag: 'Breathing',
     phases: [
@@ -50,6 +52,7 @@ export const ACTIVITIES = [
     type: 'meditation',
     title: 'Body Scan',
     subtitle: 'Progressive relaxation head to toe',
+    description: 'A guided awareness practice where you slowly move attention through each part of your body from head to feet. Helps release physical tension you may not realise you\'re holding. No experience needed — just follow along.',
     duration: 8,
     tag: 'Meditation',
     steps: [
@@ -70,6 +73,7 @@ export const ACTIVITIES = [
     type: 'relaxation',
     title: 'Progressive Muscle Relaxation',
     subtitle: 'Tense and release to let go of physical stress',
+    description: 'A clinically proven technique where you deliberately tense then release muscle groups one at a time. The contrast makes you aware of tension you\'ve been carrying — and teaches your body to let it go. Great after physically or emotionally demanding shifts.',
     duration: 8,
     tag: 'Relaxation',
     steps: [
@@ -89,6 +93,7 @@ export const ACTIVITIES = [
     type: 'relaxation',
     title: '5-4-3-2-1 Grounding',
     subtitle: 'Come back to the present moment',
+    description: 'A sensory grounding technique used to interrupt anxiety, flashbacks, or overwhelming thoughts. You\'ll identify 5 things you see, 4 you feel, 3 you hear, 2 you smell, and 1 you taste — anchoring you firmly in the present moment.',
     duration: 5,
     tag: 'Relaxation',
     steps: [

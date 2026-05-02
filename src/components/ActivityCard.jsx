@@ -14,7 +14,7 @@ export default function ActivityCard({ activity, onStart }) {
       style={{
         background: C.card, border: `0.5px solid ${C.border}`,
         borderRadius: '14px', padding: '1rem 1.125rem',
-        display: 'flex', alignItems: 'center', gap: '1rem', cursor: 'pointer',
+        display: 'flex', alignItems: 'flex-start', gap: '1rem', cursor: 'pointer',
       }}
       onClick={() => onStart(activity)}
     >
@@ -30,9 +30,14 @@ export default function ActivityCard({ activity, onStart }) {
         <div style={{ fontWeight: 500, fontSize: '15px', color: C.text, marginBottom: '2px' }}>
           {activity.title}
         </div>
-        <div style={{ fontSize: '13px', color: C.muted, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+        <div style={{ fontSize: '13px', color: C.muted, marginBottom: activity.description ? '6px' : 0 }}>
           {activity.subtitle}
         </div>
+        {activity.description && (
+          <div style={{ fontSize: '12px', color: C.subtle, lineHeight: 1.5 }}>
+            {activity.description}
+          </div>
+        )}
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px', flexShrink: 0 }}>
