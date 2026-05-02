@@ -75,7 +75,7 @@ export default function App() {
             {tab === 'home' && (
               <HomeScreen
                 moodLogs={settings.trackingOn ? moodLogs : []}
-                onLogMood={settings.trackingOn ? logMood : () => {}}
+                onLogMood={logMood}
                 onStartActivity={startActivity}
               />
             )}
