@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { C } from '../constants.js'
 import { useAudio } from '../hooks/useAudio.js'
 
-export default function BreathingScreen({ activity, onBack, onComplete }) {
+export default function BreathingScreen({ activity, voiceGender, onBack, onComplete }) {
   const { phases, scripts } = activity
   const [running, setRunning]   = useState(false)
   const [phaseIdx, setPhaseIdx] = useState(0)
@@ -10,7 +10,7 @@ export default function BreathingScreen({ activity, onBack, onComplete }) {
   const [cycles, setCycles]     = useState(0)
   const [done, setDone]         = useState(false)
   const phaseRef = useRef(0)
-  const { speak, stop } = useAudio()
+  const { speak, stop } = useAudio(voiceGender)
 
   useEffect(() => { phaseRef.current = phaseIdx }, [phaseIdx])
 

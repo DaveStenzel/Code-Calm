@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react'
 import { C } from '../constants.js'
 import { useAudio } from '../hooks/useAudio.js'
 
-export default function MeditationScreen({ activity, onBack, onComplete }) {
+export default function MeditationScreen({ activity, voiceGender, onBack, onComplete }) {
   const { steps } = activity
   const [stepIdx, setStepIdx] = useState(-1) // -1 = intro
   const [done, setDone] = useState(false)
-  const { speak, stop } = useAudio()
+  const { speak, stop } = useAudio(voiceGender)
 
   useEffect(() => {
     speak(`${activity.title}. ${activity.subtitle}. Tap Next Step when you're ready to begin.`)
