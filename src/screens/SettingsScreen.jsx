@@ -25,32 +25,40 @@ export default function SettingsScreen({ settings, onUpdateSettings }) {
         </Section>
 
         <Section label="Audio">
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.875rem 1rem' }}>
-            <div>
-              <div style={{ fontSize: '15px', color: C.text, marginBottom: '2px' }}>Guide voice</div>
-              <div style={{ fontSize: '12px', color: C.muted }}>Voice used during activities</div>
+          <ToggleRow
+            label="Voice guide"
+            description="Read each step aloud during activities"
+            on={settings.voiceGuide ?? true}
+            onToggle={() => toggle('voiceGuide')}
+          />
+          {(settings.voiceGuide ?? true) && (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.875rem 1rem', borderTop: `0.5px solid ${C.border}` }}>
+              <div>
+                <div style={{ fontSize: '15px', color: C.text, marginBottom: '2px' }}>Guide voice</div>
+                <div style={{ fontSize: '12px', color: C.muted }}>Voice used during activities</div>
+              </div>
+              <div style={{ display: 'flex', gap: '6px' }}>
+                {['female', 'male'].map(g => {
+                  const active = (settings.voiceGender ?? 'female') === g
+                  return (
+                    <button
+                      key={g}
+                      onClick={() => onUpdateSettings({ ...settings, voiceGender: g })}
+                      style={{
+                        padding: '5px 14px', borderRadius: '99px', fontSize: '13px',
+                        fontWeight: active ? 500 : 400, cursor: 'pointer',
+                        background: active ? C.primary : 'none',
+                        border: `0.5px solid ${active ? C.primary : C.border}`,
+                        color: active ? '#fff' : C.muted,
+                      }}
+                    >
+                      {g === 'female' ? 'Female' : 'Male'}
+                    </button>
+                  )
+                })}
+              </div>
             </div>
-            <div style={{ display: 'flex', gap: '6px' }}>
-              {['female', 'male'].map(g => {
-                const active = (settings.voiceGender ?? 'female') === g
-                return (
-                  <button
-                    key={g}
-                    onClick={() => onUpdateSettings({ ...settings, voiceGender: g })}
-                    style={{
-                      padding: '5px 14px', borderRadius: '99px', fontSize: '13px',
-                      fontWeight: active ? 500 : 400, cursor: 'pointer',
-                      background: active ? C.primary : 'none',
-                      border: `0.5px solid ${active ? C.primary : C.border}`,
-                      color: active ? '#fff' : C.muted,
-                    }}
-                  >
-                    {g === 'female' ? 'Female' : 'Male'}
-                  </button>
-                )
-              })}
-            </div>
-          </div>
+          )}
         </Section>
 
         <Section label="Reminders">

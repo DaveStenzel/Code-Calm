@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react'
 import { C } from '../constants.js'
 import { useAudio } from '../hooks/useAudio.js'
 
-export default function RelaxationScreen({ activity, voiceGender, onBack, onComplete }) {
+export default function RelaxationScreen({ activity, voiceGender, voiceGuide, onBack, onComplete }) {
   const { steps } = activity
   const [stepIdx, setStepIdx] = useState(-1)
   const [done, setDone] = useState(false)
-  const { speak, stop } = useAudio(voiceGender)
+  const { speak, stop } = useAudio(voiceGender, voiceGuide ?? true)
 
   useEffect(() => {
     speak(`${activity.title}. ${activity.subtitle}. Tap Begin when you're ready.`)

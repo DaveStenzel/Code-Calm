@@ -51,7 +51,7 @@ function pickVoice(voices, gender = 'female') {
   return en[0] ?? voices[0] ?? null
 }
 
-export function useAudio(gender = 'female') {
+export function useAudio(gender = 'female', enabled = true) {
   const voiceRef = useRef(null)
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export function useAudio(gender = 'female') {
   }, [gender])
 
   const speak = useCallback((text, onEnd) => {
-    if (!('speechSynthesis' in window) || !text) { onEnd?.(); return }
+    if (!enabled || !('speechSynthesis' in window) || !text) { onEnd?.(); return }
     speechSynthesis.cancel()
     const utt = new SpeechSynthesisUtterance(text)
     if (voiceRef.current) utt.voice = voiceRef.current

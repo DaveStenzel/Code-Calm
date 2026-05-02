@@ -15,6 +15,7 @@ import RelaxationScreen from './screens/RelaxationScreen.jsx'
 const DEFAULT_SETTINGS = {
   trackingOn: true,
   saveJournal: true,
+  voiceGuide: true,
   voiceGender: 'female',
   remindersOn: false,
   reminderTime: '18:00',
@@ -65,7 +66,7 @@ export default function App() {
         // Full-screen activity session — no bottom nav
         (() => {
           const { activity } = session
-          const props = { activity, voiceGender: settings.voiceGender, onBack: () => endSession(null), onComplete: () => endSession(activity) }
+          const props = { activity, voiceGender: settings.voiceGender, voiceGuide: settings.voiceGuide ?? true, onBack: () => endSession(null), onComplete: () => endSession(activity) }
           if (activity.type === 'breathing')  return <BreathingScreen  {...props} />
           if (activity.type === 'meditation') return <MeditationScreen {...props} />
           if (activity.type === 'relaxation') return <RelaxationScreen {...props} />

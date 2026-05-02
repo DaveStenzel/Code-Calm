@@ -2,12 +2,12 @@ import { useState, useEffect, useRef } from 'react'
 import { C } from '../constants.js'
 import { useAudio } from '../hooks/useAudio.js'
 
-export default function MeditationScreen({ activity, voiceGender, onBack, onComplete }) {
+export default function MeditationScreen({ activity, voiceGender, voiceGuide, onBack, onComplete }) {
   const { steps } = activity
   const autoAdvance = activity.autoAdvance ?? false
   const [stepIdx, setStepIdx] = useState(-1)
   const [done, setDone] = useState(false)
-  const { speak, stop } = useAudio(voiceGender)
+  const { speak, stop } = useAudio(voiceGender, voiceGuide ?? true)
   const timerRef = useRef(null)
 
   useEffect(() => {

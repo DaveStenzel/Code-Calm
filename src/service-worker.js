@@ -6,7 +6,7 @@
  * never goes stale after a deploy.
  */
 
-const APP_VERSION = 'v1.0.4';
+const APP_VERSION = 'v1.0.5';
 const STATIC_CACHE  = `wellness-static-${APP_VERSION}`;
 const CONTENT_CACHE = `wellness-content-${APP_VERSION}`;
 const API_CACHE     = `wellness-api-${APP_VERSION}`;
