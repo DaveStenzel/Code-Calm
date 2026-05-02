@@ -7,22 +7,21 @@ export default function SupportPanel() {
   const { emergency, crisis, firstResponder, talkToSomeone } = SUPPORT_RESOURCES
 
   return (
-    <div style={{ marginTop: '1.5rem' }}>
+    <div style={{ width: '100%' }}>
       <button
         onClick={() => setOpen(o => !o)}
         style={{
-          width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+          margin: '0 auto',
           background: open ? '#FFF3E0' : C.card,
           border: `0.5px solid ${open ? '#FBCB9A' : C.border}`,
-          borderRadius: '14px', padding: '0.875rem 1.125rem',
+          borderRadius: '999px', padding: '0.625rem 1.375rem',
           cursor: 'pointer', transition: 'background 0.2s',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span style={{ fontSize: '18px' }}>🆘</span>
-          <span style={{ fontWeight: 500, fontSize: '15px', color: C.text }}>Immediate Support</span>
-        </div>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={C.muted} strokeWidth="2" strokeLinecap="round"
+        <span style={{ fontSize: '16px' }}>🆘</span>
+        <span style={{ fontWeight: 500, fontSize: '15px', color: C.text }}>Immediate Support</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={C.muted} strokeWidth="2" strokeLinecap="round"
           style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>
           <path d="M6 9l6 6 6-6"/>
         </svg>

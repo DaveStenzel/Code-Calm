@@ -26,8 +26,13 @@ export default function HomeScreen({ moodLogs, onLogMood, onStartActivity }) {
         <p style={{ fontSize: '13px', color: C.muted }}>{affirmation}</p>
       </div>
 
+      {/* Immediate support — centred above mood check-in */}
+      <div style={{ margin: '1.25rem 1.25rem 0', display: 'flex', justifyContent: 'center' }}>
+        <SupportPanel />
+      </div>
+
       {/* Mood check-in */}
-      <div style={{ margin: '1.25rem 1.25rem 0', background: C.card, border: `0.5px solid ${C.border}`, borderRadius: '16px', padding: '1.125rem' }}>
+      <div style={{ margin: '1rem 1.25rem 0', background: C.card, border: `0.5px solid ${C.border}`, borderRadius: '16px', padding: '1.125rem' }}>
         <p style={{ fontSize: '13px', fontWeight: 500, color: C.muted, marginBottom: '0.75rem' }}>
           {todayLog ? "Today you checked in:" : "How are you feeling right now?"}
         </p>
@@ -75,10 +80,6 @@ export default function HomeScreen({ moodLogs, onLogMood, onStartActivity }) {
         </div>
       )}
 
-      {/* Immediate support */}
-      <div style={{ margin: '1.25rem 1.25rem 0' }}>
-        <SupportPanel />
-      </div>
     </div>
   )
 }
