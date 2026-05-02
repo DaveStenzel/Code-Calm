@@ -1,0 +1,63 @@
+{
+  "breathing": [
+    {
+      "id": "box-breathing",
+      "title": "Box Breathing",
+      "description": "4-4-4-4 pattern to calm the nervous system",
+      "duration": 5,
+      "phases": [
+        { "label": "Breathe in",  "duration": 4 },
+        { "label": "Hold",        "duration": 4 },
+        { "label": "Breathe out", "duration": 4 },
+        { "label": "Hold",        "duration": 4 }
+      ]
+    },
+    {
+      "id": "4-7-8",
+      "title": "4-7-8 Breathing",
+      "description": "Deep relaxation breath — exhale twice as long as the inhale",
+      "duration": 5,
+      "phases": [
+        { "label": "Breathe in",  "duration": 4 },
+        { "label": "Hold",        "duration": 7 },
+        { "label": "Breathe out", "duration": 8 }
+      ]
+    },
+    {
+      "id": "coherent",
+      "title": "Coherent Breathing",
+      "description": "5 seconds in, 5 seconds out — slows heart rate and steadies focus",
+      "duration": 5,
+      "phases": [
+        { "label": "Breathe in",  "duration": 5 },
+        { "label": "Breathe out", "duration": 5 }
+      ]
+    }
+  ],
+  "grounding": [
+    {
+      "id": "5-4-3-2-1",
+      "title": "5-4-3-2-1 Grounding",
+      "description": "Name 5 things you see, 4 you hear, 3 you can touch, 2 you smell, 1 you taste.",
+      "duration": 5
+    },
+    {
+      "id": "body-scan",
+      "title": "Body Scan",
+      "description": "Progressive relaxation from the top of your head down to your feet.",
+      "duration": 10
+    }
+  ],
+  "journal_prompts": [
+    "What's one thing you handled well today?",
+    "How is your body feeling right now?",
+    "What would help you decompress tonight?",
+    "Name something you're grateful for from your shift.",
+    "Is there anything weighing on you that you'd like to set down?",
+    "What did you learn about yourself today?",
+    "Who supported you today, and how?",
+    "What do you need most right now?",
+    "Describe a moment from today where you felt capable.",
+    "If a colleague felt what you're feeling, what would you tell them?"
+  ]
+}

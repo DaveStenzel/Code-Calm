@@ -1,0 +1,46 @@
+{
+  "resources": [
+    {
+      "name": "Safe Call Now",
+      "contact": "1-206-459-3020",
+      "type": "phone",
+      "description": "Confidential crisis referral service specifically for first responders and their families",
+      "availability": "24/7"
+    },
+    {
+      "name": "Crisis Text Line",
+      "contact": "741741",
+      "type": "text",
+      "description": "Text HOME to 741741 — free, confidential crisis counseling via text",
+      "availability": "24/7"
+    },
+    {
+      "name": "Veterans Crisis Line",
+      "contact": "988, press 1",
+      "type": "phone",
+      "description": "Call or text 988 then press 1 — also available to first responders",
+      "availability": "24/7"
+    },
+    {
+      "name": "SAMHSA National Helpline",
+      "contact": "1-800-662-4357",
+      "type": "phone",
+      "description": "Free, confidential help for substance use and mental health disorders",
+      "availability": "24/7"
+    },
+    {
+      "name": "First Responder Support Network",
+      "contact": "frsn.org",
+      "type": "web",
+      "description": "Peer support and trauma recovery resources for first responders",
+      "availability": "Online"
+    },
+    {
+      "name": "Code Green Campaign",
+      "contact": "codegreencampaign.org",
+      "type": "web",
+      "description": "Mental health awareness and resources for first responders",
+      "availability": "Online"
+    }
+  ]
+}
