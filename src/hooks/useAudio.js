@@ -64,13 +64,14 @@ export function useAudio(gender = 'female') {
     return () => speechSynthesis.removeEventListener('voiceschanged', load)
   }, [gender])
 
-  const speak = useCallback((text) => {
-    if (!('speechSynthesis' in window) || !text) return
+  const speak = useCallback((text, onEnd) => {
+    if (!('speechSynthesis' in window) || !text) { onEnd?.(); return }
     speechSynthesis.cancel()
     const utt = new SpeechSynthesisUtterance(text)
     if (voiceRef.current) utt.voice = voiceRef.current
     utt.rate = 0.82
     utt.pitch = 1.0
+    if (onEnd) utt.onend = onEnd
     speechSynthesis.speak(utt)
   }, [])
 

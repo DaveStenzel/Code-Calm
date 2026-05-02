@@ -1,31 +1,47 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { C } from '../constants.js'
 import { useAudio } from '../hooks/useAudio.js'
 
 export default function MeditationScreen({ activity, voiceGender, onBack, onComplete }) {
   const { steps } = activity
-  const [stepIdx, setStepIdx] = useState(-1) // -1 = intro
+  const autoAdvance = activity.autoAdvance ?? false
+  const [stepIdx, setStepIdx] = useState(-1)
   const [done, setDone] = useState(false)
   const { speak, stop } = useAudio(voiceGender)
+  const timerRef = useRef(null)
 
   useEffect(() => {
-    speak(`${activity.title}. ${activity.subtitle}. Tap Next Step when you're ready to begin.`)
+    speak(`${activity.title}. ${activity.subtitle}. Tap Begin when you're ready.`)
+    return () => clearTimeout(timerRef.current)
   }, [])
 
   const current = stepIdx >= 0 ? steps[stepIdx] : null
   const isLast = stepIdx === steps.length - 1
 
+  const goToStep = (idx) => {
+    setStepIdx(idx)
+    if (autoAdvance) {
+      speak(steps[idx].body, () => {
+        if (idx === steps.length - 1) {
+          timerRef.current = setTimeout(() => setDone(true), 3000)
+        } else {
+          timerRef.current = setTimeout(() => goToStep(idx + 1), 4000)
+        }
+      })
+    } else {
+      speak(steps[idx].body)
+    }
+  }
+
   const next = () => {
+    clearTimeout(timerRef.current)
     if (stepIdx === -1) {
-      setStepIdx(0)
-      speak(steps[0].body)
+      goToStep(0)
     } else if (isLast) {
       setDone(true)
       stop()
     } else {
-      const n = stepIdx + 1
-      setStepIdx(n)
-      speak(steps[n].body)
+      goToStep(stepIdx + 1)
     }
   }
 
@@ -33,7 +49,7 @@ export default function MeditationScreen({ activity, voiceGender, onBack, onComp
     <div style={{ minHeight: '100dvh', background: C.bg, display: 'flex', flexDirection: 'column' }}>
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '1rem 1.25rem', borderBottom: `0.5px solid ${C.border}`, background: C.card }}>
-        <button onClick={() => { stop(); onBack() }} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px', color: C.muted }}>
+        <button onClick={() => { stop(); clearTimeout(timerRef.current); onBack() }} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px', color: C.muted }}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
         </button>
         <div>
@@ -50,7 +66,7 @@ export default function MeditationScreen({ activity, voiceGender, onBack, onComp
       {/* Progress bar */}
       {stepIdx >= 0 && (
         <div style={{ height: '2px', background: C.border }}>
-          <div style={{ height: '100%', background: C.blue, width: `${((stepIdx + 1) / steps.length) * 100}%`, transition: 'width 0.3s' }} />
+          <div style={{ height: '100%', background: C.blue, width: `${((stepIdx + 1) / steps.length) * 100}%`, transition: 'width 0.6s' }} />
         </div>
       )}
 
@@ -63,7 +79,7 @@ export default function MeditationScreen({ activity, voiceGender, onBack, onComp
             <p style={{ fontSize: '15px', color: C.muted, lineHeight: 1.6, marginBottom: '2rem' }}>
               Well done. Take a moment to notice how your body feels.
             </p>
-            <button onClick={() => { onComplete?.(); onBack() }} style={btnStyle(C.blue, '#fff')}>Done</button>
+            <button onClick={() => { onComplete?.(); onBack() }} style={solidBtn(C.blue)}>Done</button>
           </>
         ) : stepIdx === -1 ? (
           <>
@@ -76,9 +92,11 @@ export default function MeditationScreen({ activity, voiceGender, onBack, onComp
             <p style={{ fontSize: '15px', color: C.muted, lineHeight: 1.6, marginBottom: '0.5rem' }}>{activity.subtitle}</p>
             <p style={{ fontSize: '13px', color: C.subtle, marginBottom: '2.5rem' }}>{steps.length} steps · {activity.duration} min</p>
             <p style={{ fontSize: '14px', color: C.muted, lineHeight: 1.6, marginBottom: '2rem' }}>
-              Find a comfortable position. Tap "Begin" when you're ready. Each step will be read aloud.
+              {autoAdvance
+                ? "Find a comfortable position and tap Begin. Each step will be read aloud and advance on its own — just listen and follow along."
+                : "Find a comfortable position. Tap Begin when you're ready. Each step will be read aloud."}
             </p>
-            <button onClick={next} style={btnStyle(C.blue, '#fff')}>Begin</button>
+            <button onClick={next} style={solidBtn(C.blue)}>Begin</button>
           </>
         ) : (
           <>
@@ -88,9 +106,15 @@ export default function MeditationScreen({ activity, voiceGender, onBack, onComp
             <p style={{ fontSize: '17px', lineHeight: 1.75, color: C.text, marginBottom: '2.5rem', maxWidth: '360px' }}>
               {current.body}
             </p>
-            <button onClick={next} style={btnStyle(C.blue, '#fff')}>
-              {isLast ? 'Complete' : 'Next step'}
-            </button>
+            {autoAdvance ? (
+              <button onClick={next} style={ghostBtn(C.blue)}>
+                {isLast ? 'Finish now' : 'Skip'}
+              </button>
+            ) : (
+              <button onClick={next} style={solidBtn(C.blue)}>
+                {isLast ? 'Complete' : 'Next step'}
+              </button>
+            )}
           </>
         )}
       </div>
@@ -98,7 +122,12 @@ export default function MeditationScreen({ activity, voiceGender, onBack, onComp
   )
 }
 
-const btnStyle = (bg, color) => ({
-  background: bg, border: 'none', borderRadius: '999px',
+const solidBtn = (color) => ({
+  background: color, border: 'none', borderRadius: '999px',
+  padding: '10px 36px', fontSize: '15px', fontWeight: 500, color: '#fff', cursor: 'pointer',
+})
+
+const ghostBtn = (color) => ({
+  background: 'none', border: `0.5px solid ${color}`, borderRadius: '999px',
   padding: '10px 36px', fontSize: '15px', fontWeight: 500, color, cursor: 'pointer',
 })

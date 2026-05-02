@@ -50,6 +50,7 @@ export const ACTIVITIES = [
   {
     id: 'body-scan',
     type: 'meditation',
+    autoAdvance: true,
     title: 'Body Scan',
     subtitle: 'Progressive relaxation head to toe',
     description: 'A guided awareness practice where you slowly move attention through each part of your body from head to feet. Helps release physical tension you may not realise you\'re holding. No experience needed — just follow along.',
