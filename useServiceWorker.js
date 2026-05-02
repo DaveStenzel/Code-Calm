@@ -24,7 +24,7 @@ export function useServiceWorker() {
     if (!('serviceWorker' in navigator)) return;
 
     navigator.serviceWorker
-      .register('/service-worker.js', { scope: '/' })
+      .register(`${import.meta.env.BASE_URL}service-worker.js`)
       .then(reg => {
         swReg.current = reg;
 
