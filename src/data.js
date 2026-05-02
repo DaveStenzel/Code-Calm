@@ -143,6 +143,7 @@ export const SUPPORT_RESOURCES = {
   emergency: { label: 'Emergency', number: '000', note: 'Police · Ambulance · Fire' },
   crisis: [
     { name: 'Lifeline',                  contact: '13 11 14',       type: 'phone', note: '24/7 crisis support' },
+    { name: 'Lifeline Crisis Text',      contact: '0477131114',     display: '0477 13 11 14', type: 'sms', note: 'Text HELLO · 24/7 crisis support' },
     { name: 'Beyond Blue',               contact: '1300 22 4636',   type: 'phone', note: '24/7 mental health support' },
     { name: 'Suicide Call Back Service', contact: '1300 659 467',   type: 'phone', note: '24/7 · free counselling' },
   ],

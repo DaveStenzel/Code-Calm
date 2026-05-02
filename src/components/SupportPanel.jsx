@@ -68,7 +68,10 @@ function SectionLabel({ children }) {
 }
 
 function ResourceRow({ r }) {
-  const href = r.type === 'phone' ? `tel:${r.contact}` : `https://${r.contact}`
+  const href = r.type === 'phone' ? `tel:${r.contact}`
+             : r.type === 'sms'   ? `sms:${r.contact}`
+             : `https://${r.contact}`
+  const label = r.type === 'web' ? 'Visit →' : (r.display ?? r.contact)
   return (
     <a href={href} target={r.type === 'web' ? '_blank' : undefined} rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
       <div style={{
@@ -81,7 +84,7 @@ function ResourceRow({ r }) {
             <div style={{ fontSize: '12px', color: C.muted }}>{r.note}</div>
           </div>
           <div style={{ fontSize: '13px', color: C.primary, fontWeight: 500, textAlign: 'right', flexShrink: 0 }}>
-            {r.type === 'phone' ? r.contact : 'Visit →'}
+            {label}
           </div>
         </div>
       </div>
